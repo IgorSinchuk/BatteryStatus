@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
             progressBar.setProgress(level);
             TextView textView = (TextView) findViewById(R.id.textView);
-            textView.setText("Battery: " + Integer.toString(level) + "%");
+            textView.setText("" + Integer.toString(level) + "%");
         }
     };
 

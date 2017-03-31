@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#6C5B7B"
     tools:context="com.nonexistentware.igor.batterystatus.MainActivity">
 
 
@@ -17,38 +18,24 @@
         android:layout_alignParentStart="true">
 
         <TextView
+            android:textColor="#C06C84"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Battery %"
-            android:textSize="18sp"
+            android:text="Battery "
+            android:textSize="30sp"
             android:textStyle="bold"
+            android:id="@+id/textView2"
             android:layout_alignTop="@+id/progressBar"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="33dp"
-            android:layout_marginStart="33dp"
-            android:id="@+id/textView2" />
+            android:layout_centerHorizontal="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Battery status"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:id="@+id/status"
-            android:textColor="#C70039"
-            android:layout_alignTop="@+id/progressBar"
-            android:layout_toRightOf="@+id/textView"
-            android:layout_toEndOf="@+id/textView"
-            android:layout_marginRight="3dp"
-            android:layout_marginBottom="30dp"/>
+
 
 
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="600dp"
-            android:layout_height="600dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginTop="26dp"
             android:background="@drawable/circle_shape"
             android:indeterminate="false"
@@ -63,12 +50,24 @@
             android:background="@android:color/transparent"
             android:gravity="center"
             android:text="75%"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#C06C84"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:layout_marginTop="204dp"
+            android:layout_marginTop="216dp"
             android:layout_below="@+id/textView2"
             android:layout_centerHorizontal="true" />
+
+        <TextView
+
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Check the battery status"
+            android:textColor="#C06C84"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 
