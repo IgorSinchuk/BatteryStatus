@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="#6C5B7B"
+    android:background="#DBDBDB"
     tools:context="com.nonexistentware.igor.batterystatus.AboutBattery">
 
 
