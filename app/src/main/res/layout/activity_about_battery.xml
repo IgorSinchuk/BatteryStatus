@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="com.nonexistentware.igor.batterystatus.AboutBattery">
+
+
+    <TextView
+        android:id="@+id/layout"
+        android:gravity="center"
+        android:text="STATUS"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+
+<RelativeLayout
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/batterylevel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Battery Level:"
+        />
+    <TextView
+        android:gravity="center"
+        android:id="@+id/batteryvoltage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Battery Voltage:"
+        android:layout_below="@+id/batterylevel"
+        />
+    <TextView
+        android:gravity="center"
+        android:id="@+id/batterytemperature"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Battery Temperature:"
+        android:layout_below="@+id/batteryvoltage"
+        />
+    <TextView
+        android:gravity="center"
+        android:id="@+id/batterytechology"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Technology:"
+        android:layout_below="@+id/batterytemperature"
+        />
+    <TextView
+        android:gravity="center"
+        android:id="@+id/batterystatus"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Status:"
+        android:layout_below="@+id/batterytechology"
+        />
+    <TextView
+        android:gravity="center"
+        android:id="@+id/batteryhealth"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Health:"
+        android:layout_below="@+id/batterystatus"
+        />
+    </RelativeLayout>
+
+</RelativeLayout>
