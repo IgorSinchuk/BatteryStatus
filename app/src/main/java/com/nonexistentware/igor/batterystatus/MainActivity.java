@@ -7,7 +7,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,14 +20,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
-
-
 public class MainActivity extends AppCompatActivity {
 
 
-    private TextView batteryLevel, batteryVoltage, batteryTemperature,
+    private Uri soundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+    private TextView batteryVoltage, batteryTemperature,
             batteryTechnology, batteryStatus, batteryHealth,
-            batteryChargingMethod, batteryChargingTime, USBType, ACType, infoText ;
+            batteryChargingMethod, batteryChargingTime, USBType, ACType, infoText, phoneModel, lastFullTime;
     private Chronometer chronometer;
 
 
@@ -47,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        batteryLevel = (TextView) findViewById(R.id.batterylevel);
         batteryVoltage = (TextView) findViewById(R.id.batteryvoltage);
         batteryTemperature = (TextView) findViewById(R.id.batterytemperature);
         batteryTechnology = (TextView) findViewById(R.id.batterytechology);
@@ -59,6 +61,9 @@ public class MainActivity extends AppCompatActivity {
         USBType = (TextView) findViewById(R.id.USBType);
         ACType = (TextView) findViewById(R.id.ACType);
         infoText = (TextView) findViewById(R.id.infoText);
+        phoneModel = (TextView) findViewById(R.id.phoneModel);
+        //lastFullTime = (TextView) findViewById(R.id.lastFullTime);
+
 
         // IN/VISIBLE types
         USBType.setVisibility(View.INVISIBLE);
@@ -72,26 +77,29 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(mBroadcastReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
 
-        infoText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent about = new Intent(MainActivity.this, AboutScreen.class);
-                startActivity(about);
-            }
-        });
+        //model
+        phoneModel.setText("Model: " + Build.MODEL);
 
-    }
 
-    private BroadcastReceiver myBatteryReceiver
-            = new BroadcastReceiver() {
+
+            infoText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent about = new Intent(MainActivity.this, AboutScreen.class);
+                    startActivity(about);
+                }
+            });
+
+        }
+
+
+    private BroadcastReceiver myBatteryReceiver = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context arg0, Intent arg1) {
             // TODO Auto-generated method stub
 
             if (arg1.getAction().equals(Intent.ACTION_BATTERY_CHANGED)) {
-                batteryLevel.setText("Level: "
-                        + String.valueOf(arg1.getIntExtra("level", 0)) + "%");
                 batteryVoltage.setText("Voltage: "
                         + String.valueOf((float) arg1.getIntExtra("voltage", 0) / 1000) + "V");
                 batteryTemperature.setText("Temperature: "
@@ -137,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                //charging tipe
+                //charging type
                 if (status==BatteryManager.BATTERY_PLUGGED_USB) {
                     USBType.setVisibility(View.VISIBLE);
                 }
@@ -150,6 +158,12 @@ public class MainActivity extends AppCompatActivity {
                 //chronometer Time remaining to full
                 if (status==BatteryManager.BATTERY_STATUS_CHARGING) {
                     chronometer.start();
+                } else {
+                    if (status==BatteryManager.BATTERY_STATUS_FULL) {
+                        batteryChargingMethod.setText("Battery is charged");
+                        chronometer.stop();
+                        batteryChargingTime.setText("");
+                    }
                 }
 
 
@@ -160,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
                 if (status == BatteryManager.BATTERY_PLUGGED_USB) {
                     usbConnected();
                 }
+
 
             }
         }
@@ -172,11 +187,12 @@ public class MainActivity extends AppCompatActivity {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.elec)
                 .setContentTitle("From BatteryStatus")
-                .setContentText("Test");
+                .setContentText("Battery charged!")
+                .setSound(soundUri);
         //.setSound();
 
-        Intent fullintent = new Intent(this, MainActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, fullintent,
+        Intent fullIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, fullIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(contentIntent);
 
@@ -191,7 +207,9 @@ public class MainActivity extends AppCompatActivity {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.elec)
                 .setContentTitle("From BatteryStatus")
-                .setContentText("Usb is slow");
+                .setContentText("Charging from usb can be slower");
+
+
 
         Intent usbIntent = new Intent(this, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, usbIntent,
@@ -209,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.elec)
                 .setContentTitle("From BatteryStatus")
-                .setContentText("A/C plugged");
+                .setContentText("AC plugged");
 
         Intent acIntent = new Intent(this, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, acIntent,
@@ -222,7 +240,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
 
 
 }
