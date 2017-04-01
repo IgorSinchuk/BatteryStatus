@@ -12,6 +12,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -20,8 +21,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private TextView batteryLevel, batteryVoltage, batteryTemperature,
-            batteryTechnology, batteryStatus, batteryHealth;
+            batteryTechnology, batteryStatus, batteryHealth,
+            batteryChargingMethod, batteryChargingTime, USBType, ACType, infoText ;
+    private Chronometer chronometer;
 
 
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
@@ -49,12 +53,32 @@ public class MainActivity extends AppCompatActivity {
         batteryTechnology = (TextView) findViewById(R.id.batterytechology);
         batteryStatus = (TextView) findViewById(R.id.batterystatus);
         batteryHealth = (TextView) findViewById(R.id.batteryhealth);
+        batteryChargingMethod = (TextView) findViewById(R.id.batteryChargingMethod);
+        batteryChargingTime = (TextView) findViewById(R.id.batteryChargingTime);
+        chronometer = (Chronometer) findViewById(R.id.chronometer);
+        USBType = (TextView) findViewById(R.id.USBType);
+        ACType = (TextView) findViewById(R.id.ACType);
+        infoText = (TextView) findViewById(R.id.infoText);
+
+        // IN/VISIBLE types
+        USBType.setVisibility(View.INVISIBLE);
+        ACType.setVisibility(View.INVISIBLE);
+
 
         this.registerReceiver(this.myBatteryReceiver,
                 new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
 
         registerReceiver(mBroadcastReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+
+
+        infoText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent about = new Intent(MainActivity.this, AboutScreen.class);
+                startActivity(about);
+            }
+        });
 
     }
 
@@ -106,6 +130,28 @@ public class MainActivity extends AppCompatActivity {
                 }
                 batteryHealth.setText("Health: " + strHealth);
 
+                //battery health indication
+
+
+
+
+
+
+                //charging tipe
+                if (status==BatteryManager.BATTERY_PLUGGED_USB) {
+                    USBType.setVisibility(View.VISIBLE);
+                }
+
+                if (status==BatteryManager.BATTERY_PLUGGED_AC) {
+                    ACType.setVisibility(View.VISIBLE);
+                }
+
+
+                //chronometer Time remaining to full
+                if (status==BatteryManager.BATTERY_STATUS_CHARGING) {
+                    chronometer.start();
+                }
+
 
                 // notifications
                 if (status == BatteryManager.BATTERY_STATUS_FULL) {
@@ -119,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
+
+
 
     public void fullBatteryNotification() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
@@ -174,5 +222,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
 }

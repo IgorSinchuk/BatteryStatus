@@ -47,7 +47,8 @@
 <RelativeLayout
     android:layout_below="@+id/top"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/relativeLayout">
     <TextView
         android:textColor="#F57C0B"
         android:textSize="20sp"
@@ -98,7 +99,6 @@
         android:layout_below="@+id/batterytechology"
         />
 
-
     <TextView
         android:textColor="#F57C0B"
         android:textSize="20sp"
@@ -107,8 +107,89 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Health:"
-        android:layout_below="@+id/batterystatus"
-        />
+        android:layout_below="@+id/batterystatus"/>
+
+    <TextView
+        android:id="@+id/batteryChargingMethod"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Charging method:"
+        android:layout_below="@id/batteryhealth"
+        android:textColor="#F57C0B"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/batteryChargingTime"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Time to full charge:"
+        android:layout_below="@id/batteryChargingMethod"
+        android:textColor="#F57C0B"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
+
+
+
+
 </RelativeLayout>
+
+    <Chronometer
+        android:textColor="#F57C0B"
+        android:textSize="20sp"
+        android:id="@+id/chronometer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/relativeLayout"
+        android:layout_alignRight="@+id/top"
+        android:layout_alignEnd="@+id/top" />
+
+    <TextView
+        android:id="@+id/USBType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#F57C0B"
+        android:textSize="20sp"
+        android:text="USB"
+        android:layout_above="@+id/chronometer"
+        android:layout_alignLeft="@+id/chronometer"
+        android:layout_alignStart="@+id/chronometer" />
+
+    <TextView
+        android:id="@+id/ACType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AC"
+        android:textColor="#F57C0B"
+        android:textSize="20sp"
+        android:layout_alignBaseline="@+id/USBType"
+        android:layout_alignBottom="@+id/USBType"
+        android:layout_toRightOf="@+id/USBType"
+        android:layout_toEndOf="@+id/USBType" />
+
+    <TextView
+        android:id="@+id/LastFullTime"
+        android:text="Last full charge: "
+        android:gravity="center"
+        android:textColor="#F57C0B"
+        android:textSize="20sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/infoText"
+        android:text="About app"
+        android:textColor="#F57C0B"
+        android:textSize="20sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
