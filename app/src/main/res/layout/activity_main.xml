@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#DBDBDB"
     tools:context="com.nonexistentware.igor.batterystatus.MainActivity">
 
@@ -104,25 +103,142 @@
 
     <ImageView
         android:src="@drawable/volt"
-        android:id="@+id/batteryVoltage"
+        android:id="@+id/batteryvoltage"
         android:layout_width="40dp"
         android:layout_height="30dp"
-        android:layout_marginRight="9dp"
-        android:layout_marginEnd="9dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_centerVertical="true"
         android:layout_alignRight="@+id/imageView"
         android:layout_alignEnd="@+id/imageView" />
 
     <ImageView
-        android:id="@+id/batteryTemperature"
+        android:id="@+id/batterytemperature"
         android:src="@drawable/temperature"
         android:layout_width="40dp"
         android:layout_height="30dp"
-        android:layout_alignTop="@+id/batteryVoltage"
+        android:layout_alignTop="@+id/batteryvoltage"
         android:layout_centerHorizontal="true" />
 
+    <ImageView
+        android:id="@+id/batterytechology"
+        android:src="@drawable/battery"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/batterytemperature"
+        android:layout_alignRight="@+id/imageView3"
+        android:layout_alignEnd="@+id/imageView3"
+        android:layout_marginRight="9dp"
+        android:layout_marginEnd="9dp" />
+
+    <ImageView
+        android:id="@+id/batterystatus"
+        android:src="@drawable/charging"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/imageView4"
+        android:layout_alignLeft="@+id/batteryvoltage"
+        android:layout_alignStart="@+id/batteryvoltage" />
+
+    <ImageView
+        android:id="@+id/batteryhealth"
+        android:src="@drawable/health"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/imageView5"
+        android:layout_alignLeft="@+id/batterytemperature"
+        android:layout_alignStart="@+id/batterytemperature" />
 
 
+
+    <ImageView
+        android:id="@+id/USBType"
+        android:src="@drawable/usb"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/imageView6"
+        android:layout_alignLeft="@+id/batterytechology"
+        android:layout_alignStart="@+id/batterytechology" />
+
+    <ImageView
+        android:id="@+id/ACType"
+        android:src="@drawable/ac"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/imageView6"
+        android:layout_alignLeft="@+id/batterytechology"
+        android:layout_alignStart="@+id/batterytechology" />
+
+    <ImageView
+        android:id="@+id/discharging"
+        android:src="@drawable/discharging"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/imageView6"
+        android:layout_alignLeft="@+id/batterytechology"
+        android:layout_alignStart="@+id/batterytechology" />
+
+
+
+
+
+
+
+
+    <TextView
+            android:id="@+id/batteryVoltage"
+            android:textColor="#F57C0B"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/batteryTemperature"
+            android:textColor="#F57C0B"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/imageView2"
+            android:layout_alignLeft="@+id/batterytemperature"
+            android:layout_alignStart="@+id/batterytemperature" />
+
+        <TextView
+            android:id="@+id/batteryTechnology"
+            android:textColor="#F57C0B"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/imageView3"
+            android:layout_alignLeft="@+id/imageView3"
+            android:layout_alignStart="@+id/imageView3" />
+
+        <TextView
+            android:id="@+id/batteryStatus"
+            android:textColor="#F57C0B"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/imageView4"
+            android:layout_alignLeft="@+id/imageView4"
+            android:layout_alignStart="@+id/imageView4" />
+
+        <TextView
+            android:id="@+id/batteryHealth"
+            android:textColor="#F57C0B"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/imageView5"
+            android:layout_alignLeft="@+id/batteryhealth"
+            android:layout_alignStart="@+id/batteryhealth" />
 
 
 
