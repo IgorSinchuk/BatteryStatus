@@ -16,14 +16,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.thunderrise.animations.PulseAnimation;
 
 
 public class MainActivity extends AppCompatActivity {
 
 
-    private Uri soundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+    private Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+    private ImageView r1, r2, r3, r4, r5, r6;
 
     private TextView batteryVoltage, batteryTemperature,
             batteryTechnology, batteryStatus, batteryHealth,
@@ -55,19 +60,30 @@ public class MainActivity extends AppCompatActivity {
         batteryTechnology = (TextView) findViewById(R.id.batterytechology);
         batteryStatus = (TextView) findViewById(R.id.batterystatus);
         batteryHealth = (TextView) findViewById(R.id.batteryhealth);
-        batteryChargingMethod = (TextView) findViewById(R.id.batteryChargingMethod);
-        batteryChargingTime = (TextView) findViewById(R.id.batteryChargingTime);
-        chronometer = (Chronometer) findViewById(R.id.chronometer);
-        USBType = (TextView) findViewById(R.id.USBType);
-        ACType = (TextView) findViewById(R.id.ACType);
-        infoText = (TextView) findViewById(R.id.infoText);
-        phoneModel = (TextView) findViewById(R.id.phoneModel);
+        //batteryChargingMethod = (TextView) findViewById(R.id.batteryChargingMethod);
+        //batteryChargingTime = (TextView) findViewById(R.id.batteryChargingTime);
+        //chronometer = (Chronometer) findViewById(R.id.chronometer);
+        //USBType = (TextView) findViewById(R.id.USBType);
+        //ACType = (TextView) findViewById(R.id.ACType);
+        //infoText = (TextView) findViewById(R.id.infoText);
+        //phoneModel = (TextView) findViewById(R.id.phoneModel);
         //lastFullTime = (TextView) findViewById(R.id.lastFullTime);
 
 
+        //images
+        r1 = (ImageView) findViewById(R.id.imageView);
+        r2 = (ImageView) findViewById(R.id.imageView2);
+        r3 = (ImageView) findViewById(R.id.imageView3);
+        r4 = (ImageView) findViewById(R.id.imageView4);
+        r5 = (ImageView) findViewById(R.id.imageView5);
+        r6 = (ImageView) findViewById(R.id.imageView6);
+
+
+        initPulse();
+
+
         // IN/VISIBLE types
-        USBType.setVisibility(View.INVISIBLE);
-        ACType.setVisibility(View.INVISIBLE);
+
 
 
         this.registerReceiver(this.myBatteryReceiver,
@@ -78,19 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         //model
-        phoneModel.setText("Model: " + Build.MODEL);
 
 
 
-            infoText.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent about = new Intent(MainActivity.this, AboutScreen.class);
-                    startActivity(about);
-                }
-            });
 
-        }
+    }
 
 
     private BroadcastReceiver myBatteryReceiver = new BroadcastReceiver() {
@@ -103,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 batteryVoltage.setText("Voltage: "
                         + String.valueOf((float) arg1.getIntExtra("voltage", 0) / 1000) + "V");
                 batteryTemperature.setText("Temperature: "
-                        + String.valueOf((float) arg1.getIntExtra("temperature", 0) / 10) + "c");
+                        + String.valueOf((float) arg1.getIntExtra("temperature", 0) / 10) + "C");
                 batteryTechnology.setText("Technology: " + arg1.getStringExtra("technology"));
 
                 int status = arg1.getIntExtra("status", BatteryManager.BATTERY_STATUS_UNKNOWN);
@@ -141,25 +149,21 @@ public class MainActivity extends AppCompatActivity {
                 //battery health indication
 
 
-
-
-
-
                 //charging type
-                if (status==BatteryManager.BATTERY_PLUGGED_USB) {
+                if (status == BatteryManager.BATTERY_PLUGGED_USB) {
                     USBType.setVisibility(View.VISIBLE);
                 }
 
-                if (status==BatteryManager.BATTERY_PLUGGED_AC) {
+                if (status == BatteryManager.BATTERY_PLUGGED_AC) {
                     ACType.setVisibility(View.VISIBLE);
                 }
 
 
                 //chronometer Time remaining to full
-                if (status==BatteryManager.BATTERY_STATUS_CHARGING) {
+                if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
                     chronometer.start();
                 } else {
-                    if (status==BatteryManager.BATTERY_STATUS_FULL) {
+                    if (status == BatteryManager.BATTERY_STATUS_FULL) {
                         batteryChargingMethod.setText("Battery is charged");
                         chronometer.stop();
                         batteryChargingTime.setText("");
@@ -180,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
-
 
 
     public void fullBatteryNotification() {
@@ -208,7 +211,6 @@ public class MainActivity extends AppCompatActivity {
                 .setSmallIcon(R.drawable.elec)
                 .setContentTitle("From BatteryStatus")
                 .setContentText("Charging from usb can be slower");
-
 
 
         Intent usbIntent = new Intent(this, MainActivity.class);
@@ -239,6 +241,19 @@ public class MainActivity extends AppCompatActivity {
         manager.notify(0, builder.build());
 
 
+    }
+
+
+    //charging animation
+    private void initPulse(){
+
+        final TextView pulseImage = (TextView)findViewById(R.id.textView);
+
+        PulseAnimation.create().with(pulseImage)
+                .setDuration(310)
+                .setRepeatCount(PulseAnimation.INFINITE)
+                .setRepeatMode(PulseAnimation.REVERSE)
+                .start();
     }
 
 
