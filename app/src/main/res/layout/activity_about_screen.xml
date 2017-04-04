@@ -29,6 +29,14 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="49dp" />
 
+   <ImageView
+       android:src="@drawable/r1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/textVersion"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentStart="true" />
+
 
 
 </RelativeLayout>

@@ -11,6 +11,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.BatteryManager;
 
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,7 +28,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
 
-    private TextView batteryvoltage, batterytemperature, batterytechnology, batterystatus, batteryhealth, dischargingText;
+    private TextView batteryvoltage, batterytemperature, batterytechnology, batterystatus, batteryhealth, dischargingText, phoneModelTxt, androidVersionTxt;
 
     private Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView batteryVoltage, batteryTemperature,
             batteryTechnology, batteryStatus, batteryHealth,
-            batteryChargingMethod, batteryChargingTime, USBType, ACType, infoText, phoneModel, lastFullTime, discharging;
+            batteryChargingMethod, batteryChargingTime, USBType, ACType, infoText, phoneModel, lastFullTime, discharging, androidVersion, mobileIMG;
     private Chronometer chronometer;
 
 
@@ -65,20 +66,21 @@ public class MainActivity extends AppCompatActivity {
         batteryHealth = (ImageView) findViewById(R.id.batteryhealth);
         //batteryChargingMethod = (ImageView) findViewById(R.id.batteryChargingMethod);
         //batteryChargingTime = (ImageView) findViewById(R.id.batteryChargingTime);
-        //chronometer = (Chronometer) findViewById(R.id.chronometer);
+        chronometer = (Chronometer) findViewById(R.id.chronometer);
         USBType = (ImageView) findViewById(R.id.USBType);
         ACType = (ImageView) findViewById(R.id.ACType);
         //infoText = (ImageView) findViewById(R.id.infoText);
-        //phoneModel = (ImageView) findViewById(R.id.phoneModel);
+        phoneModel = (ImageView) findViewById(R.id.phoneModel);
         //lastFullTime = (ImageView) findViewById(R.id.lastFullTime);
         discharging = (ImageView) findViewById(R.id.discharging);
+        mobileIMG = (ImageView) findViewById(R.id.mobileIMG);
 
         batteryvoltage = (TextView) findViewById(R.id.batteryVoltage);
         batterytemperature = (TextView) findViewById(R.id.batteryTemperature);
         batterytechnology = (TextView) findViewById(R.id.batteryTechnology);
         batterystatus = (TextView) findViewById(R.id.batteryStatus);
         batteryhealth = (TextView) findViewById(R.id.batteryHealth);
-
+        phoneModelTxt = (TextView) findViewById(R.id.phoneModelTxt);
 
         //images
         r1 = (ImageView) findViewById(R.id.imageView);
@@ -87,12 +89,6 @@ public class MainActivity extends AppCompatActivity {
         r4 = (ImageView) findViewById(R.id.imageView4);
         r5 = (ImageView) findViewById(R.id.imageView5);
         r6 = (ImageView) findViewById(R.id.imageView6);
-
-
-
-
-
-
 
 
 
@@ -106,13 +102,12 @@ public class MainActivity extends AppCompatActivity {
 
         this.registerReceiver(this.myBatteryReceiver,
                 new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-
-
         registerReceiver(mBroadcastReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
 
         //model
-
+        phoneModelTxt.setText(Build.MODEL);
+        //android version
 
 
 
@@ -137,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
                     strStatus = "Charging";
                 } else if (status == BatteryManager.BATTERY_STATUS_DISCHARGING) {
-                    strStatus = "Dis-charging";
+                    strStatus = "Discharging";
                 } else if (status == BatteryManager.BATTERY_STATUS_NOT_CHARGING) {
                     strStatus = "Discharging";
                 } else if (status == BatteryManager.BATTERY_STATUS_FULL) {
@@ -202,7 +197,17 @@ public class MainActivity extends AppCompatActivity {
 
 
                 //chronometer Time remaining to full
-
+                if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
+                    chronometer.start();
+                } else {
+                    if (status == BatteryManager.BATTERY_STATUS_FULL) {
+                        chronometer.stop();
+                    } else {
+                        if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
+                            chronometer.stop();
+                        }
+                    }
+                }
 
 
 
@@ -279,6 +284,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void androidOS() {
+
+    }
 
 
 

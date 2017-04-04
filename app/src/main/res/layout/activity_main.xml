@@ -178,9 +178,70 @@
         android:layout_alignLeft="@+id/batterytechology"
         android:layout_alignStart="@+id/batterytechology" />
 
+    <ImageView
+        android:src="@drawable/r7"
+        android:id="@+id/phoneModel"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/phoneModelTxt"
+        android:layout_toRightOf="@+id/imageView4"
+        android:layout_toEndOf="@+id/imageView4" />
 
+    <ImageView
+        android:id="@+id/mobileIMG"
+        android:src="@drawable/mobile"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/phoneModel"
+        android:layout_alignLeft="@+id/phoneModel"
+        android:layout_alignStart="@+id/phoneModel"
+        android:layout_marginLeft="9dp"
+        android:layout_marginStart="9dp" />
 
+    <TextView
+        android:id="@+id/phoneModelTxt"
+        android:textColor="#F57C0B"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:layout_width="130dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="7dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/batterystatus"
+        android:layout_alignStart="@+id/batterystatus"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
 
+    <ImageView
+        android:id="@+id/androidVersion"
+        android:src="@drawable/r9"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/phoneModel"
+        android:layout_toLeftOf="@+id/imageView6"
+        android:layout_toStartOf="@+id/imageView6" />
+
+    <ImageView
+        android:id="@+id/stopWatch"
+        android:src="@drawable/chronometer"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/androidVersion"
+        android:layout_alignRight="@+id/androidVersion"
+        android:layout_alignEnd="@+id/androidVersion"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:textColor="#F57C0B"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:layout_width="90dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/androidVersion"
+        android:layout_toLeftOf="@+id/USBType"
+        android:layout_toStartOf="@+id/USBType" />
 
 
 
@@ -223,11 +284,13 @@
             android:textColor="#F57C0B"
             android:gravity="center"
             android:textSize="15dp"
-            android:layout_width="70dp"
+            android:layout_width="90dp"
             android:layout_height="20dp"
             android:layout_below="@+id/imageView4"
-            android:layout_alignLeft="@+id/imageView4"
-            android:layout_alignStart="@+id/imageView4" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp" />
 
         <TextView
             android:id="@+id/batteryHealth"
