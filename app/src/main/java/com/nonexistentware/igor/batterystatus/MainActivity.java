@@ -28,7 +28,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
 
-    private TextView batteryvoltage, batterytemperature, batterytechnology, batterystatus, batteryhealth, dischargingText, phoneModelTxt, androidVersionTxt;
+    private TextView batteryvoltage, batterytemperature, batterytechnology, batterystatus,
+            batteryhealth, dischargingText, phoneModelTxt, androidVersionTxt, barTxt;
 
     private Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView batteryVoltage, batteryTemperature,
             batteryTechnology, batteryStatus, batteryHealth,
-            batteryChargingMethod, batteryChargingTime, USBType, ACType, infoText, phoneModel, lastFullTime, discharging, androidVersion, mobileIMG;
+            batteryChargingMethod, batteryChargingTime, USBType, ACType, infoText,
+            phoneModel, lastFullTime, discharging, androidVersion, mobileIMG, bar;
     private Chronometer chronometer;
 
 
@@ -74,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
         //lastFullTime = (ImageView) findViewById(R.id.lastFullTime);
         discharging = (ImageView) findViewById(R.id.discharging);
         mobileIMG = (ImageView) findViewById(R.id.mobileIMG);
+        bar = (ImageView) findViewById(R.id.bar);
+
 
         batteryvoltage = (TextView) findViewById(R.id.batteryVoltage);
         batterytemperature = (TextView) findViewById(R.id.batteryTemperature);
@@ -81,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
         batterystatus = (TextView) findViewById(R.id.batteryStatus);
         batteryhealth = (TextView) findViewById(R.id.batteryHealth);
         phoneModelTxt = (TextView) findViewById(R.id.phoneModelTxt);
+        barTxt = (TextView) findViewById(R.id.barTxt);
+
 
         //images
         r1 = (ImageView) findViewById(R.id.imageView);
@@ -89,8 +95,6 @@ public class MainActivity extends AppCompatActivity {
         r4 = (ImageView) findViewById(R.id.imageView4);
         r5 = (ImageView) findViewById(R.id.imageView5);
         r6 = (ImageView) findViewById(R.id.imageView6);
-
-
 
 
         // IN/VISIBLE types
@@ -109,6 +113,13 @@ public class MainActivity extends AppCompatActivity {
         phoneModelTxt.setText(Build.MODEL);
         //android version
 
+        barTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent about = new  Intent(MainActivity.this, AboutScreen.class);
+                startActivity(about);
+            }
+        });
 
 
     }
@@ -160,10 +171,9 @@ public class MainActivity extends AppCompatActivity {
                 batteryhealth.setText("" + strHealth); // Health
 
 
-
                 //battery health indication
                 if (status == BatteryManager.BATTERY_HEALTH_DEAD) {
-                    
+
                 }
 
 
@@ -210,16 +220,10 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-
                 // notifications
                 if (status == BatteryManager.BATTERY_STATUS_FULL) {
                     fullBatteryNotification();
                 }
-                if (status == BatteryManager.BATTERY_PLUGGED_USB) {
-                    usbConnected();
-
-                }
-
 
             }
         }
@@ -247,47 +251,44 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void usbConnected() {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.elec)
-                .setContentTitle("From BatteryStatus")
-                .setContentText("Charging from usb can be slower");
+    /**public void usbConnected() {
+     NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+     .setSmallIcon(R.drawable.elec)
+     .setContentTitle("From BatteryStatus")
+     .setContentText("Charging from usb can be slower");
 
 
-        Intent usbIntent = new Intent(this, MainActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, usbIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(contentIntent);
+     Intent usbIntent = new Intent(this, MainActivity.class);
+     PendingIntent contentIntent = PendingIntent.getActivity(this, 0, usbIntent,
+     PendingIntent.FLAG_UPDATE_CURRENT);
+     builder.setContentIntent(contentIntent);
 
-        // Add as notification
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0, builder.build());
-
-
-    }
-
-    public void acConnected() {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.elec)
-                .setContentTitle("From BatteryStatus")
-                .setContentText("AC plugged");
-
-        Intent acIntent = new Intent(this, MainActivity.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, acIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(contentIntent);
-
-        // Add as notification
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0, builder.build());
+     // Add as notification
+     NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+     manager.notify(0, builder.build());
 
 
-    }
+     }
 
-    public void androidOS() {
+     public void acConnected() {
+     NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+     .setSmallIcon(R.drawable.elec)
+     .setContentTitle("From BatteryStatus")
+     .setContentText("AC plugged");
 
-    }
+     Intent acIntent = new Intent(this, MainActivity.class);
+     PendingIntent contentIntent = PendingIntent.getActivity(this, 0, acIntent,
+     PendingIntent.FLAG_UPDATE_CURRENT);
+     builder.setContentIntent(contentIntent);
 
+     // Add as notification
+     NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+     manager.notify(0, builder.build());
+
+
+     }
+
+     */
 
 
 

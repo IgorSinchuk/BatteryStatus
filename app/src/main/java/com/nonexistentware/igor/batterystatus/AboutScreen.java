@@ -15,8 +15,11 @@ import android.widget.TextView;
 
 public class AboutScreen extends AppCompatActivity {
 
-    private ImageView facebookIcon;
-    private TextView textVersion;
+    private ImageView facebookIcon, volt, temp, battery, charging,
+            health, usb, ac, discharg, mobile, chronom, bar;
+    private TextView textVersion, elecTxt, tempTxt, typeTxt,
+            chargingxt, healthTxt, usbtxt, acTxt, dischargTxt,
+            mobileTxt, chronomTxt, barTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,31 @@ public class AboutScreen extends AppCompatActivity {
 
         facebookIcon = (ImageView) findViewById(R.id.facebookIcon);
         textVersion = (TextView) findViewById(R.id.textVersion);
+
+        //legend images
+        volt = (ImageView) findViewById(R.id.volt);
+        temp = (ImageView) findViewById(R.id.temp);
+        battery = (ImageView) findViewById(R.id.batery);
+        charging = (ImageView) findViewById(R.id.charging);
+        health = (ImageView) findViewById(R.id.health);
+        usb = (ImageView) findViewById(R.id.usb);
+        ac = (ImageView) findViewById(R.id.ac);
+        discharg = (ImageView) findViewById(R.id.discharg);
+        mobile = (ImageView) findViewById(R.id.mobile);
+        chronom = (ImageView) findViewById(R.id.chronom);
+
+
+        //text
+        elecTxt = (TextView) findViewById(R.id.elecTxt);
+        tempTxt = (TextView) findViewById(R.id.tempTxt);
+        typeTxt = (TextView) findViewById(R.id.typeTxt);
+        chargingxt = (TextView) findViewById(R.id.chargingxt);
+        healthTxt = (TextView) findViewById(R.id.healthTxt);
+        usbtxt = (TextView) findViewById(R.id.usbtxt);
+        acTxt = (TextView) findViewById(R.id.acTxt);
+        dischargTxt = (TextView) findViewById(R.id.dischargTxt);
+        mobileTxt = (TextView) findViewById(R.id.mobileTxt);
+        chronomTxt = (TextView) findViewById(R.id.chronomTxt);
 
 
 

@@ -303,6 +303,26 @@
             android:layout_alignLeft="@+id/batteryhealth"
             android:layout_alignStart="@+id/batteryhealth" />
 
+    <ImageView
+        android:id="@+id/bar"
+        android:src="@drawable/bar"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/top"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp" />
+
+    <TextView
+        android:id="@+id/barTxt"
+        android:text="ABOUT"
+        android:textStyle="bold"
+        android:textColor="#DBDBDB"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/bar"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
