@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#312f44"
+    tools:context="com.nonexistentware.igor.batterystatus.BatteryStatus">
+
+
+    <ImageView
+        android:src="@drawable/b1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/volts"
+        android:layout_alignRight="@+id/volts"
+        android:layout_alignEnd="@+id/volts"
+        android:layout_above="@+id/temp"
+        android:id="@+id/imageView5" />
+
+    <ImageView
+        android:src="@drawable/statusbar"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
+        android:id="@+id/volts"/>
+
+    <ImageView
+        android:src="@drawable/b2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/health"
+        android:layout_alignTop="@+id/temp"
+        android:layout_alignRight="@+id/temp"
+        android:layout_alignEnd="@+id/temp"
+        android:id="@+id/imageView7" />
+
+    <ImageView
+        android:src="@drawable/statusbar2"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:id="@+id/temp"
+        android:layout_below="@+id/volts"
+        android:layout_alignLeft="@+id/volts"
+        android:layout_alignStart="@+id/volts"
+        android:layout_marginTop="28dp" />
+
+    <ImageView
+        android:src="@drawable/b3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/batteryType"
+        android:layout_alignRight="@+id/health"
+        android:layout_alignEnd="@+id/health"
+        android:layout_alignTop="@+id/health"
+        android:id="@+id/imageView8" />
+
+    <ImageView
+        android:src="@drawable/statusbar3"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:id="@+id/health"
+        android:layout_below="@+id/temp"
+        android:layout_alignLeft="@+id/temp"
+        android:layout_alignStart="@+id/temp"
+        android:layout_marginTop="28dp" />
+
+    <ImageView
+        android:src="@drawable/b4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/charging"
+        android:layout_alignRight="@+id/batteryType"
+        android:layout_alignEnd="@+id/batteryType"
+        android:layout_alignTop="@+id/batteryType"
+        android:id="@+id/imageView9" />
+
+    <ImageView
+        android:id="@+id/batteryType"
+        android:src="@drawable/statusbar4"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/health"
+        android:layout_alignLeft="@+id/health"
+        android:layout_alignStart="@+id/health"
+        android:layout_marginTop="28dp" />
+
+    <ImageView
+        android:src="@drawable/b5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/charging"
+        android:layout_alignRight="@+id/charging"
+        android:layout_alignEnd="@+id/charging"
+        android:layout_alignTop="@+id/charging"
+        android:id="@+id/imageView10" />
+
+    <ImageView
+        android:src="@drawable/statusbar5"
+        android:id="@+id/charging"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/batteryType"
+        android:layout_alignLeft="@+id/batteryType"
+        android:layout_alignStart="@+id/batteryType"
+        android:layout_marginTop="28dp" />
+
+    <TextView
+        android:id="@+id/batteryVoltage"
+        android:text=""
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/temp"
+        android:layout_alignLeft="@+id/volts"
+        android:layout_alignStart="@+id/volts"
+        android:layout_alignTop="@+id/imageView5" />
+
+    <TextView
+        android:id="@+id/batteryTemperature"
+        android:text=""
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/health"
+        android:layout_alignLeft="@+id/temp"
+        android:layout_alignStart="@+id/temp"
+        android:layout_alignTop="@+id/imageView7" />
+
+    <TextView
+        android:id="@+id/batteryTechnology"
+        android:text=""
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/batteryType"
+        android:layout_alignLeft="@+id/health"
+        android:layout_alignStart="@+id/health"
+        android:layout_alignTop="@+id/imageView8" />
+
+    <TextView
+        android:id="@+id/batteryHealth"
+        android:text=""
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/charging"
+        android:layout_alignLeft="@+id/batteryType"
+        android:layout_alignStart="@+id/batteryType"
+        android:layout_alignTop="@+id/imageView9" />
+
+    <TextView
+        android:id="@+id/batteryStatus"
+        android:text=""
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/imageView10"
+        android:layout_alignLeft="@+id/charging"
+        android:layout_alignStart="@+id/charging"
+        android:layout_alignTop="@+id/imageView10" />
+
+
+
+</RelativeLayout>

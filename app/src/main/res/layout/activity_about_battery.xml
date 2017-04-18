@@ -63,7 +63,7 @@
     <TextView
         android:textSize="20sp"
         android:gravity="center"
-        android:id="@+id/batterystatus"
+        android:id="@+id/batteryStatus"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Status:"
@@ -78,7 +78,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Health:"
-        android:layout_below="@+id/batterystatus"
+        android:layout_below="@+id/batteryStatus"
         />
     </RelativeLayout>
 

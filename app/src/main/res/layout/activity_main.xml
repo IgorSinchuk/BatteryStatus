@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DBDBDB"
+    android:background="#312f44"
     tools:context="com.nonexistentware.igor.batterystatus.MainActivity">
 
 
@@ -45,284 +45,75 @@
     </RelativeLayout>
 
 
-
     <ImageView
-        android:src="@drawable/r1"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:id="@+id/imageView"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/top"
-        android:layout_toStartOf="@+id/top" />
-
-    <ImageView
-        android:src="@drawable/r2"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_alignTop="@+id/imageView"
-        android:layout_centerHorizontal="true"
+        android:src="@drawable/batterylight"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="11dp"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
         android:id="@+id/imageView2" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:src="@drawable/r3"
-        android:layout_width="60dp"
+        android:src="@drawable/usblight"
+        android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignTop="@+id/imageView2"
-        android:layout_toRightOf="@+id/top"
-        android:layout_toEndOf="@+id/top" />
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_toRightOf="@+id/imageView2"
+        android:layout_toEndOf="@+id/imageView2"
+        android:id="@+id/imageView3" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:src="@drawable/r4"
-        android:layout_below="@+id/imageView"
-        android:layout_alignLeft="@+id/imageView"
-        android:layout_alignStart="@+id/imageView"
-        android:layout_marginTop="77dp" />
+        android:src="@drawable/aclight"
+        android:layout_width="44dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_alignTop="@+id/imageView3"
+        android:layout_toRightOf="@+id/imageView3"
+        android:layout_toEndOf="@+id/imageView3"
+        android:id="@+id/imageView4" />
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:src="@drawable/r5"
+        android:src="@drawable/charginglight"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
         android:layout_alignTop="@+id/imageView4"
-        android:layout_alignLeft="@+id/imageView2"
-        android:layout_alignStart="@+id/imageView2" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:src="@drawable/r6"
-        android:layout_alignTop="@+id/imageView5"
-        android:layout_alignLeft="@+id/imageView3"
-        android:layout_alignStart="@+id/imageView3" />
-
-
-    <ImageView
-        android:src="@drawable/volt"
-        android:id="@+id/batteryvoltage"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView" />
-
-    <ImageView
-        android:id="@+id/batterytemperature"
-        android:src="@drawable/temperature"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/batteryvoltage"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:id="@+id/batterytechology"
-        android:src="@drawable/battery"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/batterytemperature"
-        android:layout_alignRight="@+id/imageView3"
-        android:layout_alignEnd="@+id/imageView3"
-        android:layout_marginRight="9dp"
-        android:layout_marginEnd="9dp" />
-
-    <ImageView
-        android:id="@+id/batterystatus"
-        android:src="@drawable/charging"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/imageView4"
-        android:layout_alignLeft="@+id/batteryvoltage"
-        android:layout_alignStart="@+id/batteryvoltage" />
-
-    <ImageView
-        android:id="@+id/batteryhealth"
-        android:src="@drawable/health"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/imageView5"
-        android:layout_alignLeft="@+id/batterytemperature"
-        android:layout_alignStart="@+id/batterytemperature" />
-
-
-
-    <ImageView
-        android:id="@+id/USBType"
-        android:src="@drawable/usb"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/imageView6"
-        android:layout_alignLeft="@+id/batterytechology"
-        android:layout_alignStart="@+id/batterytechology" />
-
-    <ImageView
-        android:id="@+id/ACType"
-        android:src="@drawable/ac"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/imageView6"
-        android:layout_alignLeft="@+id/batterytechology"
-        android:layout_alignStart="@+id/batterytechology" />
-
-    <ImageView
-        android:id="@+id/discharging"
-        android:src="@drawable/discharging"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/imageView6"
-        android:layout_alignLeft="@+id/batterytechology"
-        android:layout_alignStart="@+id/batterytechology" />
-
-    <ImageView
-        android:src="@drawable/r7"
-        android:id="@+id/phoneModel"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_above="@+id/phoneModelTxt"
         android:layout_toRightOf="@+id/imageView4"
-        android:layout_toEndOf="@+id/imageView4" />
+        android:layout_toEndOf="@+id/imageView4"
+        android:id="@+id/charging"/>
 
     <ImageView
-        android:id="@+id/mobileIMG"
-        android:src="@drawable/mobile"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/phoneModel"
-        android:layout_alignLeft="@+id/phoneModel"
-        android:layout_alignStart="@+id/phoneModel"
-        android:layout_marginLeft="9dp"
-        android:layout_marginStart="9dp" />
-
-    <TextView
-        android:id="@+id/phoneModelTxt"
-        android:textColor="#F57C0B"
-        android:gravity="center"
-        android:textSize="15dp"
-        android:layout_width="130dp"
-        android:layout_height="20dp"
-        android:layout_marginBottom="7dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/batterystatus"
-        android:layout_alignStart="@+id/batterystatus"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp" />
-
-    <ImageView
-        android:id="@+id/androidVersion"
-        android:src="@drawable/r9"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_alignTop="@+id/phoneModel"
-        android:layout_toLeftOf="@+id/imageView6"
-        android:layout_toStartOf="@+id/imageView6" />
-
-    <ImageView
-        android:id="@+id/stopWatch"
-        android:src="@drawable/chronometer"
-        android:layout_width="40dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/androidVersion"
-        android:layout_alignRight="@+id/androidVersion"
-        android:layout_alignEnd="@+id/androidVersion"
-        android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <Chronometer
-        android:id="@+id/chronometer"
-        android:textColor="#F57C0B"
-        android:gravity="center"
-        android:textSize="15dp"
-        android:layout_width="90dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/androidVersion"
-        android:layout_toLeftOf="@+id/USBType"
-        android:layout_toStartOf="@+id/USBType" />
-
-
-
-
-    <TextView
-            android:id="@+id/batteryVoltage"
-            android:textColor="#F57C0B"
-            android:gravity="center"
-            android:textSize="18dp"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-        android:layout_below="@+id/imageView"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView" />
-
-        <TextView
-            android:id="@+id/batteryTemperature"
-            android:textColor="#F57C0B"
-            android:gravity="center"
-            android:textSize="18dp"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/imageView2"
-            android:layout_alignLeft="@+id/batterytemperature"
-            android:layout_alignStart="@+id/batterytemperature" />
-
-        <TextView
-            android:id="@+id/batteryTechnology"
-            android:textColor="#F57C0B"
-            android:gravity="center"
-            android:textSize="15dp"
-            android:layout_width="60dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/imageView3"
-            android:layout_alignLeft="@+id/imageView3"
-            android:layout_alignStart="@+id/imageView3" />
-
-        <TextView
-            android:id="@+id/batteryStatus"
-            android:textColor="#F57C0B"
-            android:gravity="center"
-            android:textSize="15dp"
-            android:layout_width="90dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/imageView4"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="11dp"
-            android:layout_marginStart="11dp" />
-
-        <TextView
-            android:id="@+id/batteryHealth"
-            android:textColor="#F57C0B"
-            android:gravity="center"
-            android:textSize="15dp"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:layout_below="@+id/imageView5"
-            android:layout_alignLeft="@+id/batteryhealth"
-            android:layout_alignStart="@+id/batteryhealth" />
-
-    <ImageView
-        android:id="@+id/bar"
         android:src="@drawable/bar"
         android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/top"
+        android:layout_alignStart="@+id/top"
+        android:layout_marginBottom="107dp"
+        android:id="@+id/imageView" />
+
+    <ImageView
+        android:src="@drawable/batterystatus"
+        android:id="@+id/batteryStatus"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/top"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="11dp" />
+        android:layout_marginTop="48dp" />
 
-    <TextView
-        android:id="@+id/barTxt"
-        android:text="ABOUT"
-        android:textStyle="bold"
-        android:textColor="#DBDBDB"
-        android:gravity="center"
-        android:textSize="20sp"
+    <ImageView
+        android:src="@drawable/aboutapp"
+        android:id="@+id/aboutApp"
         android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_alignTop="@+id/bar"
-        android:layout_centerHorizontal="true" />
+        android:layout_height="30dp"
+        android:layout_below="@+id/batteryStatus"
+        android:layout_alignLeft="@+id/batteryStatus"
+        android:layout_alignStart="@+id/batteryStatus"
+        android:layout_marginTop="20dp" />
 
 
 </RelativeLayout>

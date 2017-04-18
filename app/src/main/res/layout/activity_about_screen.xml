@@ -4,246 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DBDBDB"
+    android:background="#312f44"
     tools:context="com.nonexistentware.igor.batterystatus.AboutScreen">
 
-<ImageView
-    android:id="@+id/facebookIcon"
-    android:src="@drawable/facebook"
-    android:layout_width="130dp"
-    android:layout_height="130dp"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true"
-    android:onClick="showAlert"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:src="@drawable/facebook"
+        android:id="@+id/imageView6"
+        android:layout_marginTop="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
 
     <TextView
         android:id="@+id/textVersion"
-        android:text="Version 1.1"
-        android:textColor="#F57C0B"
+        android:text="Version 1.2"
+        android:textColor="#f17d80"
         android:textSize="20sp"
         android:gravity="center"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/facebookIcon"
+        android:layout_marginTop="58dp"
+        android:layout_below="@+id/imageView6"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="49dp" />
+        android:layout_alignParentStart="true" />
 
-    <ImageView
-        android:id="@+id/volt"
-        android:src="@drawable/voltor"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
+    <TextView
+        android:id="@+id/phoneModelTxt"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="#f17d80"
+        android:text="Phone model: "
+        android:layout_marginTop="26dp"
         android:layout_below="@+id/textVersion"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="20dp" />
-
-    <ImageView
-        android:id="@+id/temp"
-        android:src="@drawable/temperatureor"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/volt"
-        android:layout_alignLeft="@+id/volt"
-        android:layout_alignStart="@+id/volt" />
-
-    <ImageView
-        android:id="@+id/batery"
-        android:src="@drawable/batteryor"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/temp"
-        android:layout_alignLeft="@+id/temp"
-        android:layout_alignStart="@+id/temp" />
-
-    <ImageView
-        android:id="@+id/charging"
-        android:src="@drawable/chargingor"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/batery"
-        android:layout_alignLeft="@+id/batery"
-        android:layout_alignStart="@+id/batery" />
-
-    <ImageView
-        android:id="@+id/health"
-        android:src="@drawable/healthor"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/charging"
-        android:layout_alignLeft="@+id/charging"
-        android:layout_alignStart="@+id/charging" />
-
-    <ImageView
-        android:id="@+id/usb"
-        android:src="@drawable/usbor"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/health"
-        android:layout_alignLeft="@+id/health"
-        android:layout_alignStart="@+id/health" />
-
-    <ImageView
-        android:id="@+id/ac"
-        android:src="@drawable/acor"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/usb"
-        android:layout_alignLeft="@+id/usb"
-        android:layout_alignStart="@+id/usb" />
-
-    <ImageView
-        android:id="@+id/discharg"
-        android:src="@drawable/dischargingor"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/ac"
-        android:layout_alignLeft="@+id/ac"
-        android:layout_alignStart="@+id/ac" />
-
-    <ImageView
-        android:id="@+id/mobile"
-        android:src="@drawable/mobileor"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/discharg"
-        android:layout_alignLeft="@+id/discharg"
-        android:layout_alignStart="@+id/discharg" />
-
-    <ImageView
-        android:id="@+id/chronom"
-        android:src="@drawable/chronometeror"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/mobile"
-        android:layout_alignLeft="@+id/mobile"
-        android:layout_alignStart="@+id/mobile" />
-
-    <TextView
-        android:id="@+id/elecTxt"
-        android:text="Voltage"
-        android:textColor="#F57C0B"
-        android:textSize="24sp"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/volt"
-        android:layout_toRightOf="@+id/volt"
-        android:layout_toEndOf="@+id/volt" />
-
-    <TextView
-        android:id="@+id/tempTxt"
-        android:text="Temperature"
-        android:textColor="#F57C0B"
-        android:textSize="24sp"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/elecTxt"
-        android:layout_toRightOf="@+id/temp"
-        android:layout_toEndOf="@+id/temp" />
-
-    <TextView
-        android:id="@+id/typeTxt"
-        android:text="Battery type"
-        android:textColor="#F57C0B"
-        android:textSize="24sp"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/temp"
-        android:layout_toRightOf="@+id/batery"
-        android:layout_toEndOf="@+id/batery" />
-
-    <TextView
-        android:id="@+id/chargingxt"
-        android:text="Charging"
-        android:textColor="#F57C0B"
-        android:textSize="24sp"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/batery"
-        android:layout_toRightOf="@+id/batery"
-        android:layout_toEndOf="@+id/batery" />
-
-    <TextView
-        android:id="@+id/healthTxt"
-        android:text="Health"
-        android:textColor="#F57C0B"
-        android:textSize="24sp"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/charging"
-        android:layout_toRightOf="@+id/charging"
-        android:layout_toEndOf="@+id/charging" />
-
-    <TextView
-        android:id="@+id/usbtxt"
-        android:text="USB"
-        android:textColor="#F57C0B"
-        android:textSize="24sp"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/healthTxt"
-        android:layout_toRightOf="@+id/health"
-        android:layout_toEndOf="@+id/health" />
-
-    <TextView
-        android:id="@+id/acTxt"
-        android:text="AC"
-        android:textColor="#F57C0B"
-        android:textSize="24sp"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/usbtxt"
-        android:layout_toRightOf="@+id/usb"
-        android:layout_toEndOf="@+id/usb" />
-
-    <TextView
-        android:id="@+id/dischargTxt"
-        android:text="Discharging"
-        android:textColor="#F57C0B"
-        android:textSize="24sp"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/ac"
-        android:layout_toRightOf="@+id/discharg"
-        android:layout_toEndOf="@+id/discharg" />
-
-
-    <TextView
-        android:id="@+id/mobileTxt"
-        android:text="Model"
-        android:textColor="#F57C0B"
-        android:textSize="24sp"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/discharg"
-        android:layout_toRightOf="@+id/mobile"
-        android:layout_toEndOf="@+id/mobile" />
-
-    <TextView
-        android:id="@+id/chronomTxt"
-        android:text="Chronometer"
-        android:textColor="#F57C0B"
-        android:textSize="24sp"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/mobile"
-        android:layout_toRightOf="@+id/mobile"
-        android:layout_toEndOf="@+id/mobile" />
-
-
-
-
-
-
-
-
-
-
-
-
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
