@@ -99,8 +99,8 @@
     <ImageView
         android:src="@drawable/batterystatus"
         android:id="@+id/batteryStatus"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/top"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp" />
@@ -108,12 +108,37 @@
     <ImageView
         android:src="@drawable/aboutapp"
         android:id="@+id/aboutApp"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/batteryStatus"
         android:layout_alignLeft="@+id/batteryStatus"
         android:layout_alignStart="@+id/batteryStatus"
         android:layout_marginTop="20dp" />
 
+
+    <TextView
+        android:id="@+id/batteryVoltageTxt"
+        android:layout_width="1dp"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:id="@+id/batteryTemperatureTxt"
+        android:layout_width="1dp"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:id="@+id/batteryTechnologyTxt"
+        android:layout_width="1dp"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:id="@+id/batteryStatusTxt"
+        android:layout_width="1dp"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:id="@+id/batteryHealthTxt"
+        android:layout_width="1dp"
+        android:layout_height="1dp" />
 
 </RelativeLayout>

@@ -109,7 +109,9 @@
 
     <TextView
         android:id="@+id/batteryVoltage"
-        android:text=""
+        android:text=" TEST:"
+        android:textSize="30sp"
+        android:textColor="#f17d80"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_above="@+id/temp"
@@ -120,6 +122,8 @@
     <TextView
         android:id="@+id/batteryTemperature"
         android:text=""
+        android:textSize="30sp"
+        android:textColor="#f17d80"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_above="@+id/health"
@@ -130,6 +134,8 @@
     <TextView
         android:id="@+id/batteryTechnology"
         android:text=""
+        android:textSize="30sp"
+        android:textColor="#f17d80"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_above="@+id/batteryType"
@@ -140,6 +146,8 @@
     <TextView
         android:id="@+id/batteryHealth"
         android:text=""
+        android:textSize="30sp"
+        android:textColor="#f17d80"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_above="@+id/charging"
@@ -150,12 +158,15 @@
     <TextView
         android:id="@+id/batteryStatus"
         android:text=""
+        android:textSize="30sp"
+        android:textColor="#f17d80"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_alignBottom="@+id/imageView10"
         android:layout_alignLeft="@+id/charging"
         android:layout_alignStart="@+id/charging"
         android:layout_alignTop="@+id/imageView10" />
+
 
 
 

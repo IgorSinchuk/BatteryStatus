@@ -11,7 +11,6 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.BatteryManager;
 
-import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     private Chronometer chronometer;
 
     private TextView textView;
+
+    private TextView batteryVoltage, batteryTemperature, batteryTechnology, batteryStatusTxt,
+            batteryHealth, dischargingText, phoneModelTxt, androidVersionTxt, barTxt;
 
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         imageView2 = (ImageView) findViewById(R.id.imageView2);
         imageView3 = (ImageView) findViewById(R.id.imageView3);
         imageView4 = (ImageView) findViewById(R.id.imageView4);
-        imageView6 = (ImageView) findViewById(R.id.imageView6);
+        imageView6 = (ImageView) findViewById(R.id.facebook);
         charging = (ImageView) findViewById(R.id.charging);
         batteryStatus = (ImageView) findViewById(R.id.batteryStatus);
         aboutApp = (ImageView) findViewById(R.id.aboutApp);
@@ -69,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.textView);
 
+        batteryVoltage = (TextView) findViewById(R.id.batteryVoltageTxt);
+        batteryTemperature = (TextView) findViewById(R.id.batteryTemperatureTxt);
+        batteryTechnology = (TextView) findViewById(R.id.batteryTechnologyTxt);
+        batteryStatusTxt = (TextView) findViewById(R.id.batteryStatusTxt);
+        batteryHealth = (TextView) findViewById(R.id.batteryHealthTxt);
 
 
         imageView2.setVisibility(View.INVISIBLE); // battery icon
@@ -99,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     private BroadcastReceiver myBatteryReceiver = new BroadcastReceiver() {
 
         @Override
@@ -107,64 +113,76 @@ public class MainActivity extends AppCompatActivity {
             // TODO Auto-generated method stub
 
             if (arg1.getAction().equals(Intent.ACTION_BATTERY_CHANGED)) {
-
+                batteryVoltage.setText(" " //voltage
+                        + String.valueOf((float) arg1.getIntExtra("voltage", 0) / 1000) + "V");
+                batteryTemperature.setText("  " //Temperature:
+                        + String.valueOf((float) arg1.getIntExtra("temperature", 0) / 10) + "C");
+                batteryTechnology.setText("  " + arg1.getStringExtra("technology")); //Technology
 
                 int status = arg1.getIntExtra("status", BatteryManager.BATTERY_STATUS_UNKNOWN);
                 String strStatus;
                 if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
-                    strStatus = "Charging";
+                    strStatus = " Charging";
                 } else if (status == BatteryManager.BATTERY_STATUS_DISCHARGING) {
-                    strStatus = "Discharging";
+                    strStatus = " Discharging";
                 } else if (status == BatteryManager.BATTERY_STATUS_NOT_CHARGING) {
-                    strStatus = "Discharging";
+                    strStatus = " Discharging";
                 } else if (status == BatteryManager.BATTERY_STATUS_FULL) {
-                    strStatus = "Full";
+                    strStatus = " Full";
                 } else {
-                    strStatus = "Unknown";
+                    strStatus = " Unknown";
                 }
-
+                batteryStatusTxt.setText("" + strStatus); // status
 
                 int health = arg1.getIntExtra("health", BatteryManager.BATTERY_HEALTH_UNKNOWN);
                 String strHealth;
                 if (health == BatteryManager.BATTERY_HEALTH_GOOD) {
-                    strHealth = "Good";
+                    strHealth = " Good";
                 } else if (health == BatteryManager.BATTERY_HEALTH_OVERHEAT) {
-                    strHealth = "Over Heat";
+                    strHealth = " Over Heat";
                 } else if (health == BatteryManager.BATTERY_HEALTH_DEAD) {
-                    strHealth = "Dead";
+                    strHealth = " Dead";
                 } else if (health == BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE) {
-                    strHealth = "Over Voltage";
+                    strHealth = " Over Voltage";
                 } else if (health == BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE) {
-                    strHealth = "Unspecified Failure";
+                    strHealth = " Unspecified Failure";
                 } else {
-                    strHealth = "Unknown";
+                    strHealth = " Unknown";
+                }
+                batteryHealth.setText("" + strHealth); // Health
 
+                if (status == BatteryManager.BATTERY_STATUS_CHARGING) { // charging ac/usb icon on
+                    charging.setVisibility(View.VISIBLE);
 
-                    // charging icon
-                    if (status==BatteryManager.BATTERY_STATUS_CHARGING) {
-                        charging.setVisibility(View.VISIBLE);
-                    } else if (status==BatteryManager.BATTERY_STATUS_NOT_CHARGING) {
-                        charging.setVisibility(View.INVISIBLE);
-                    }
-                    // plug icon
-                    if (status==BatteryManager.BATTERY_PLUGGED_AC) {
-                        imageView4.setVisibility(View.VISIBLE);
-                    } else if (status==BatteryManager.BATTERY_STATUS_NOT_CHARGING) {
-                        imageView4.setVisibility(View.INVISIBLE);
-                    }
-                    // usb icon
-                    if (status==BatteryManager.BATTERY_PLUGGED_USB) {
-                        imageView3.setVisibility(View.VISIBLE);
-                    } else if (status==BatteryManager.BATTERY_STATUS_NOT_CHARGING) {
-                        imageView3.setVisibility(View.INVISIBLE);
-                    }
-                    //discharging icon
-                    if (status==BatteryManager.BATTERY_STATUS_DISCHARGING) {
-                        imageView2.setVisibility(View.VISIBLE);
-                    }
+                } else if (status == BatteryManager.BATTERY_STATUS_NOT_CHARGING) {  // charging ac/usb icon off
+                    charging.setVisibility(View.INVISIBLE);
+                }
+
+                // usb plugged
+                if (status==BatteryManager.BATTERY_PLUGGED_USB) {
+                    imageView3.setVisibility(View.VISIBLE);//usb
+                    imageView2.setVisibility(View.INVISIBLE);
+                } else if (status==BatteryManager.BATTERY_PLUGGED_AC) {
+                    imageView3.setVisibility(View.INVISIBLE);
+                    imageView4.setVisibility(View.VISIBLE); //plug
+                    imageView2.setVisibility(View.INVISIBLE);
+                } else if (status==BatteryManager.BATTERY_STATUS_NOT_CHARGING) {
+                    imageView3.setVisibility(View.INVISIBLE);
+                    imageView4.setVisibility(View.INVISIBLE);
+                    imageView2.setVisibility(View.VISIBLE);
+                }
+                if (status==BatteryManager.BATTERY_PLUGGED_AC) {
+                    imageView4.setVisibility(View.VISIBLE);
+                } else  if (status==BatteryManager.BATTERY_STATUS_NOT_CHARGING) {
+                    imageView2.setVisibility(View.VISIBLE); //battery icon
+                }
+                //notifications
+                if (status==BatteryManager.BATTERY_STATUS_FULL) {
+                    fullBatteryNotification();
                 }
             }
         }
+
     };
             public void fullBatteryNotification () {
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
